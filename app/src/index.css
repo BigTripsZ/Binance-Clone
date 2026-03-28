@@ -1,0 +1,235 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 200 18% 14%;
+    --foreground: 210 20% 92%;
+    --card: 210 14% 11%;
+    --card-foreground: 210 20% 92%;
+    --popover: 210 14% 11%;
+    --popover-foreground: 210 20% 92%;
+    --primary: 45 94% 50%;
+    --primary-foreground: 210 14% 11%;
+    --secondary: 210 11% 20%;
+    --secondary-foreground: 210 20% 92%;
+    --muted: 210 11% 20%;
+    --muted-foreground: 215 10% 55%;
+    --accent: 45 94% 50%;
+    --accent-foreground: 210 14% 11%;
+    --destructive: 354 70% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 210 9% 30%;
+    --input: 210 11% 20%;
+    --ring: 45 94% 50%;
+    --radius: 0.5rem;
+    
+    /* Binance custom colors */
+    --binance-bg: #1D252B;
+    --binance-card: #1e2329;
+    --binance-input: #2b3139;
+    --binance-yellow: #f0b90b;
+    --binance-yellow-hover: #fcd535;
+    --binance-text: #eaecef;
+    --binance-muted: #848e9c;
+    --binance-border: #474d57;
+    --binance-green: #0ecb81;
+    --binance-red: #f6465d;
+    --binance-info: #2b2a1a;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--binance-bg);
+    color: var(--binance-text);
+    min-height: 100vh;
+  }
+  
+  input, textarea {
+    font-family: inherit;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--binance-border);
+    border-radius: 20px;
+  }
+}
+
+@layer components {
+  /* Binance button styles */
+  .binance-btn {
+    @apply w-full bg-[#fcd535] text-[#1E2329] border-none rounded-lg font-semibold cursor-pointer transition-all duration-200 flex items-center justify-center;
+  }
+  
+  .binance-btn:hover:not(:disabled) {
+    @apply bg-[#f0b90b];
+  }
+  
+  .binance-btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+  
+  /* Binance input styles */
+  .binance-input {
+    @apply w-full bg-[#2B3139] border border-[#474D57] rounded-lg text-[#EAECEF] text-base outline-none transition-colors duration-200;
+  }
+  
+  .binance-input:focus {
+    @apply border-[#F0B90B];
+  }
+  
+  .binance-input::placeholder {
+    @apply text-[#5E6673];
+  }
+  
+  /* Social button */
+  .social-btn {
+    @apply w-full bg-[#2B3139] border border-[#474D57] rounded-lg text-[#EAECEF] font-medium cursor-pointer flex items-center justify-center gap-3 transition-colors duration-200;
+  }
+  
+  .social-btn:hover:not(:disabled) {
+    @apply bg-[#363C45];
+  }
+  
+  /* Footer link */
+  .footer-link {
+    @apply text-[#F0B90B] no-underline text-base font-medium hover:underline;
+  }
+}
+
+/* Loading bar animation */
+@keyframes loading-bar {
+  0%, 100% { 
+    transform: scaleY(1); 
+  }
+  50% { 
+    transform: scaleY(0.4); 
+  }
+}
+
+.animate-loading-bar {
+  animation: loading-bar 0.6s ease-in-out infinite;
+}
+
+/* Shake animation for error */
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.animate-shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Pulse animation for timer */
+@keyframes pulse-timer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-timer {
+  animation: pulse-timer 1s ease-in-out infinite;
+}
+
+/* Rotate animation for success icon */
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-rotate {
+  animation: rotate 20s linear infinite;
+}
+
+/* Slide in from right */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out forwards;
+}
+
+/* Slide out to right */
+@keyframes slide-out-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+.animate-slide-out-right {
+  animation: slide-out-right 0.3s ease-in forwards;
+}
+
+/* Fade in */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
+/* Copy feedback animation */
+@keyframes fade-in-out {
+  0% { opacity: 0; transform: translateY(-5px); }
+  15% { opacity: 1; transform: translateY(0); }
+  85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-5px); }
+}
+
+.animate-fade-in-out {
+  animation: fade-in-out 2s ease forwards;
+}
+
+/* Number input hide arrows */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* OTP input */
+.otp-input {
+  @apply bg-[#1D252B] border-[1.5px] border-[#474d57] rounded-lg text-center text-xl font-semibold text-white caret-[#F0B90B] transition-all duration-200;
+}
+
+.otp-input:focus {
+  @apply border-[#F0B90B] outline-none;
+  box-shadow: 0 0 0 1px #F0B90B;
+}
